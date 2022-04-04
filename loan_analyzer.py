@@ -20,7 +20,9 @@ loan_costs = [500, 600, 200, 1000, 450]
 # YOUR CODE HERE!
 
 number_of_loans = len(loan_costs)
-print(number_of_loans)
+print(f"The number of loans is: {number_of_loans}")
+
+
 
 
 # What is the total of all loans?
@@ -29,7 +31,7 @@ print(number_of_loans)
 # YOUR CODE HERE!
 
 total_sum = sum(loan_costs)
-print (total_sum) 
+print (f"The total sum of the loans is: ${total_sum}.") 
 
     
 
@@ -39,7 +41,7 @@ print (total_sum)
 # YOUR CODE HERE!
 
 average = total_sum / number_of_loans
-print( average)
+print( f"The average loan amount is ${average}.")
 
 
 
@@ -84,8 +86,8 @@ future_value = loan.get("future_value" , 1000)
 remaining_months = loan.get("remaining_months" , 9)
 loan_price = loan.get('loan price', 500)
 
-print( future_value)
-print( remaining_months)
+print( f"The future value is ${future_value}.")
+print(f"The remaining months on the loan is: {remaining_months}.")
 
 
 # @TODO: Use the formula for Present Value to calculate a "fair value" of the loan.
@@ -96,6 +98,7 @@ print( remaining_months)
 # YOUR CODE HERE!
 
 present_value = future_value / (1 + 0.2/12) ** remaining_months 
+print(f"the fair value of the loan is ${present_value}.")
 
 # If Present Value represents what the loan is really worth, does it make sense to buy the loan at its cost?
 # @TODO: Write a conditional statement (an if-else statement) to decide if the present value represents the loan's fair value.
@@ -150,7 +153,7 @@ print(calculate)
 
 
 
-print(f"The present value of the loan is: {calculate}")
+print(f"The present value of the loan is: ${calculate}")
 
 
 """Part 4: Conditionally filter lists of loans.
@@ -204,7 +207,6 @@ for loan in loans:
 print(inexpensive_loans)
 
 
-
 # @TODO: Print the `inexpensive_loans` list
 # YOUR CODE HERE!
 
@@ -233,3 +235,8 @@ output_path = Path("inexpensive_loans.csv")
 # and each row of `loan.values()` from the `inexpensive_loans` list.
 # YOUR CODE HERE!
 
+with open(output_path, "w", newline="") as csvfile:
+    csvwriter = csv.writer(csvfile)
+    csvwriter.writerow(header)
+    for inexpensive in inexpensive_loans:
+        csvwriter.writerow(inexpensive_loans)
